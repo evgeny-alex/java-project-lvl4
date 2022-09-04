@@ -36,7 +36,7 @@ public final class App {
     private static void addRoutes(Javalin app) {
         // Для GET-запроса на маршрут / будет выполняться
         // обработчик welcome в контроллере RootController
-        app.get("/", RootController.welcome);
+        app.get("/", RootController.getWelcome());
     }
 
 

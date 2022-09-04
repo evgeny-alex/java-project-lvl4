@@ -1,1 +1,1 @@
-web: sh build/install/app/bin/app
+web: java -jar build/libs/java-project-lvl4-1.0-SNAPSHOT.jar

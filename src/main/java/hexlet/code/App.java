@@ -1,12 +1,17 @@
 package hexlet.code;
 
 import hexlet.code.controllers.RootController;
+import hexlet.code.controllers.UrlController;
 import io.javalin.Javalin;
 import io.javalin.plugin.rendering.template.JavalinThymeleaf;
 import nz.net.ultraq.thymeleaf.layoutdialect.LayoutDialect;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
+
+import static io.javalin.apibuilder.ApiBuilder.path;
+import static io.javalin.apibuilder.ApiBuilder.post;
+import static javax.swing.UIManager.get;
 
 public final class App {
 
@@ -37,6 +42,14 @@ public final class App {
         // Для GET-запроса на маршрут / будет выполняться
         // обработчик welcome в контроллере RootController
         app.get("/", RootController.getWelcome());
+
+        app.routes(() -> {
+            path("urls", () -> {
+                get(UrlController.listUrls);
+                post(UrlController.createUrl);
+            });
+        });
+
     }
 
 

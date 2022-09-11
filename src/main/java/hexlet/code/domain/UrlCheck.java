@@ -15,14 +15,14 @@ public final class UrlCheck extends Model {
     @Id
     private long id;
 
-    private int statusCode;
+    private final int statusCode;
 
-    private String title;
+    private final String title;
 
-    private String h1;
+    private final String h1;
 
     @Lob
-    private String description;
+    private final String description;
 
     @WhenCreated
     private Instant createdAt;

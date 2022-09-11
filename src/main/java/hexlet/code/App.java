@@ -40,13 +40,13 @@ public final class App {
     private static void addRoutes(Javalin app) {
         app.get("/", RootController.getWelcome());
 
-        app.get("/urls", UrlController.listUrls);
+        app.get("/urls", UrlController.getListUrls());
 
-        app.post("/urls",  UrlController.createUrl);
+        app.post("/urls",  UrlController.getCreateUrl());
 
-        app.get("/urls/{id}", UrlController.showUrl);
+        app.get("/urls/{id}", UrlController.getShowUrl());
 
-        app.post("/urls/{id}/checks", UrlController.checkUrl);
+        app.post("/urls/{id}/checks", UrlController.getCheckUrl());
     }
 
     public static Javalin getApp() {

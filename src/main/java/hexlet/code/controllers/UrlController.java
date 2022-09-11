@@ -26,11 +26,11 @@ public final class UrlController {
     private static final int ROW_PER_PAGE = 10;
 
     /**
-     * Метод обрабатывает POST запрос, создание URL в БД
+     * Метод обрабатывает POST запрос, создание URL в БД.
      *
      * url - единственный элемент формы для сохранения
      */
-    public static Handler createUrl = ctx -> {
+    private static Handler createUrl = ctx -> {
         String inputUrl = ctx.formParam("url");
 
         if (inputUrl == null || inputUrl.equals("")) {
@@ -71,11 +71,11 @@ public final class UrlController {
     };
 
     /**
-     * Метод обрабатывает GET-запрос по получению сайтов на конкретной странице
+     * Метод обрабатывает GET-запрос по получению сайтов на конкретной странице.
      *
      * page - номер страницы, выбранной пользователем
      */
-    public static Handler listUrls = ctx -> {
+    private static Handler listUrls = ctx -> {
         int page = ctx.queryParamAsClass("page", Integer.class).getOrDefault(1) - 1;
 
         PagedList<Url> pagedUrls = new QUrl()
@@ -109,11 +109,11 @@ public final class UrlController {
 
 
     /**
-     * Метод обрабатывает GET-запрос по получению информации по конкретному сайту
+     * Метод обрабатывает GET-запрос по получению информации по конкретному сайту.
      *
      * id - идентификатор сайта в БД
      */
-    public static Handler showUrl = ctx -> {
+    private static Handler showUrl = ctx -> {
         int id = ctx.pathParamAsClass("id", Integer.class).getOrDefault(null);
 
         Url url = new QUrl()
@@ -132,11 +132,11 @@ public final class UrlController {
     };
 
     /**
-     * Метод обрабатывает POST-запрос по проверке сайта
+     * Метод обрабатывает POST-запрос по проверке сайта.
      *
      * id - идентификатор сайта в БД
      */
-    public static Handler checkUrl = ctx -> {
+    private static Handler checkUrl = ctx -> {
         int id = ctx.pathParamAsClass("id", Integer.class).getOrDefault(null);
 
         Url url = new QUrl()
@@ -175,5 +175,19 @@ public final class UrlController {
     };
 
 
+    public static Handler getCreateUrl() {
+        return createUrl;
+    }
 
+    public static Handler getListUrls() {
+        return listUrls;
+    }
+
+    public static Handler getShowUrl() {
+        return showUrl;
+    }
+
+    public static Handler getCheckUrl() {
+        return checkUrl;
+    }
 }

@@ -3,7 +3,7 @@ datasource:
     driverClassName: org.postgresql.Driver
     username: ${JDBC_DATABASE_USERNAME}
     password: ${JDBC_DATABASE_PASSWORD}
-    url: ${DATABASE_URL}
+    url: ${JDBC_DATABASE_URL}
 
 ebean:
   migration:

@@ -1,12 +1,8 @@
 datasource:
   db:
-    username: sa
-    password: sa
-    url: jdbc:h2:mem:app
-  production:
     username: ${JDBC_DATABASE_USERNAME}
     password: ${JDBC_DATABASE_PASSWORD}
-    url: ${JDBC_DATABASE_URL}
+    url: ${DATABASE_URL}
 
 ebean:
   migration:

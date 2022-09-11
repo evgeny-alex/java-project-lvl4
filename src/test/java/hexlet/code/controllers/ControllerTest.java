@@ -18,7 +18,6 @@ public abstract class ControllerTest {
 
     protected static Javalin app;
     protected static String baseUrlPath;
-    protected static Url  baseUrl;
     protected static Url existingUrl;
     protected static UrlCheck existingUrlCheck;
     protected static MockWebServer mockServer;
@@ -39,8 +38,6 @@ public abstract class ControllerTest {
         app.start(0);
         int port = app.port();
         baseUrlPath = "http://127.0.0.1:" + port;
-        baseUrl = new Url(baseUrlPath);
-        baseUrl.save();
 
         existingUrl = new Url("https://yandex.ru/");
         existingUrlCheck = new UrlCheck(200, "some title", "some h1", "some description");

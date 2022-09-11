@@ -149,8 +149,10 @@ public final class UrlController {
 
         try {
             HttpResponse<String> response = Unirest.get(url.getName()).asString();
+            // Парсим страницу
             Document doc = Jsoup.parse(response.getBody());
 
+            // Проверяем наличие title, h1, description
             int statusCode = response.getStatus();
             String title = doc.title();
             Element h1Element = doc.selectFirst("h1");

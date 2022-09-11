@@ -33,7 +33,7 @@ class UrlControllerTest extends ControllerTest {
 
     @Test
     void testStore1() {
-        String inputUrl = "https://yandex.ru/";
+        String inputUrl = "https://mail.ru";
         HttpResponse responsePost = Unirest
                 .post(baseUrlPath + "/urls")
                 .field("url", inputUrl)

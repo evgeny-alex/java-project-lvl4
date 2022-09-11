@@ -55,7 +55,7 @@ public abstract class ControllerTest {
         int port = app.port();
         baseUrlPath = "http://127.0.0.1:" + port;
 
-        existingUrl = new Url("https://yandex.ru/");
+        existingUrl = new Url("https://yandex.ru");
         existingUrlCheck = new UrlCheck(200, "some title", "some h1", "some description");
         existingUrl.getUrlChecks().add(existingUrlCheck);
         existingUrl.save();

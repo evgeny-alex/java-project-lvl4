@@ -3,11 +3,15 @@ package hexlet.code.controllers;
 import hexlet.code.App;
 import hexlet.code.domain.Url;
 import hexlet.code.domain.UrlCheck;
+import io.ebean.DB;
+import io.ebean.Transaction;
 import io.javalin.Javalin;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -21,6 +25,7 @@ public abstract class ControllerTest {
     protected static Url existingUrl;
     protected static UrlCheck existingUrlCheck;
     protected static MockWebServer mockServer;
+    private static Transaction transaction;
 
     private static Path getTemplatesPath(String fileName) {
         return Paths.get("src", "test", "resources", "templates", fileName)
@@ -31,6 +36,17 @@ public abstract class ControllerTest {
         Path filePath = getTemplatesPath(fileName);
         return Files.readString(filePath).trim();
     }
+
+    @BeforeEach
+    void beforeEach() {
+        transaction = DB.beginTransaction();
+    }
+
+    @AfterEach
+    void afterEach() {
+        transaction.rollback();
+    }
+
 
     @BeforeAll
     public static void beforeAll() throws IOException {
